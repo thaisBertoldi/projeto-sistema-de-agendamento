@@ -12,4 +12,6 @@ app.get('/', (req, res) => {
     res.send('Olá, teste!');
 });
 
+app.get('/cadastro', () => {})
+
 app.listen(8080, () => {});

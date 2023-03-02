@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom'
 
 export const DivHome = styled.div`
   display: grid;
@@ -16,6 +17,9 @@ export const DivInstructions = styled.div`
 export const DivSectionInstruction = styled.div`
   padding: 2em;
   margin-top: 2.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
 `;
 
 export const H2Instruction = styled.h2`
@@ -32,4 +36,11 @@ export const LiInstruction = styled.li`
   margin: 1.5em 0;
   padding: 0;
   list-style: none;
+`;
+
+export const LinkHome = styled(Link)`
+    text-decoration: none;
+    color: white;
+    border: 1px solid black;
+    background-color: blue;
 `;
