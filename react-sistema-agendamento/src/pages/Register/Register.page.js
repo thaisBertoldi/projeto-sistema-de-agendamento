@@ -1,6 +1,9 @@
 import { useFormik } from "formik";
 import { AllForm, Button, DivForm, Input, LabelInput } from "./Register.style";
 import { useNavigate } from "react-router-dom";
+import InputMask from "react-input-mask";
+import Notiflix from "notiflix";
+
 
 function Register() {
   const navigate = useNavigate();
@@ -15,7 +18,7 @@ function Register() {
       time: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      Notiflix.Notify.success("Cadastro criado com sucesso!");
       navigate('/');
     },
   });
@@ -47,6 +50,9 @@ function Register() {
           <DivForm>
             <LabelInput htmlFor="cpf">CPF do paciente</LabelInput>
             <Input
+              as={InputMask}
+              mask="999.999.999-99"
+              placeholder="000.000.000-00"
               type="text"
               id="cpf"
               name="cpf"
