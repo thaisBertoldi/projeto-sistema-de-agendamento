@@ -3,6 +3,7 @@ import { AllForm, Button, DivForm, Input, LabelInput } from "./Register.style";
 import { useNavigate } from "react-router-dom";
 import InputMask from "react-input-mask";
 import Notiflix from "notiflix";
+import api from '../../api';
 
 
 function Register() {
@@ -18,8 +19,12 @@ function Register() {
       time: "",
     },
     onSubmit: (values) => {
-      Notiflix.Notify.success("Cadastro criado com sucesso!");
-      navigate('/');
+      api.post('/create', values).then((res) => {
+        Notiflix.Notify.success("Cadastro criado com sucesso!");
+        navigate('/')
+      }).catch((err) => {
+        Notiflix.Notify.failure('Não foi possível concluir a operação.')
+      })
     },
   });
   return (
