@@ -35,3 +35,7 @@ export const Button = styled.button`
   border-radius: 8px;
   cursor: pointer;
 `;
+
+export const AlertErrorInput = styled.p`
+  color: red;
+`;
