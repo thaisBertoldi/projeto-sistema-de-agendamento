@@ -26,6 +26,11 @@ class AppointmentController {
     res.status(200);
     res.send("Cadastrado com sucesso");
   }
+
+  async getAll(req, res) {
+    const query = await Appointment.GetAll(false);
+    res.json(query);
+  }
 }
 
 module.exports = new AppointmentController();
