@@ -28,8 +28,8 @@ class AppointmentController {
   }
 
   async getAll(req, res) {
-    const query = await Appointment.GetAll(false);
-    res.json(query);
+    const appointments = await Appointment.GetAll(false);
+    res.json(appointments);
   }
 }
 

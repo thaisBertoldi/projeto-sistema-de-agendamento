@@ -1,21 +1,10 @@
-import React, { Component, useEffect } from 'react'
+import React from 'react'
+import { GiCheckMark } from 'react-icons/gi'
+import { HiOutlineClipboardDocumentList } from 'react-icons/hi2'
 import Calendar from '../../components/Calendar.component'
 import { DivHome, DivInstructions, DivSectionInstruction, H2Instruction, LiInstruction, LinkHome, UlInstruction } from './Home.style'
-import { HiOutlineClipboardDocumentList } from 'react-icons/hi2'
-import { GiCheckMark } from 'react-icons/gi'
-import api from '../../api'
 
 function Home() {
-
-    async function getAllAppointments () {
-        const data = await api.get('/get-all-appointments');
-        console.log(data);
-    }
-
-    useEffect(() => {
-        getAllAppointments();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, {})
 
     return (
       <DivHome>

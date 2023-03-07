@@ -34,15 +34,14 @@ function Register() {
       time: Yup.string().required("Você precisa preencher esse campo."),
     }),
     onSubmit: async(values) => {
-      try {
-        values.date = moment(values.date).format('yyyy/mm/do');
-        await api.post("/create", values);
-        Notiflix.Notify.success("Cadastro criado com sucesso!");
-        navigate("/");
-      } catch (error) {
+      await api.post("/create", values).then(res => {
+          values.date = moment(values.date).format('yyyy/mm/do');
+          Notiflix.Notify.success("Cadastro criado com sucesso!");
+          navigate("/");
+        }).catch(error => {
         console.log(error)
         Notiflix.Notify.failure("Não foi possível concluir a operação. " + error.response.data.err);
-      };
+      });
     },
   });
   return (
