@@ -40,6 +40,15 @@ class AppointmentService {
             return newAppointments;
         }
     }
+
+    async GetById(id) {
+        try {
+            const data  = await appointmentModel.findOne({ '_id': id });
+            return data;
+        } catch (err) {
+            console.log(err);
+        }
+    }
 }
 
 module.exports = new AppointmentService();

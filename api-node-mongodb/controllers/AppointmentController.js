@@ -31,6 +31,16 @@ class AppointmentController {
     const appointments = await Appointment.GetAll(false);
     res.json(appointments);
   }
+
+  async getById(req, res) {
+    const data = await Appointment.GetById(req.params.id);
+    if (!data) {
+      res.status(404);
+      res.json({ error: "Consulta não encontrada" });
+      return
+    }
+    res.json(data);
+  }
 }
 
 module.exports = new AppointmentController();

@@ -12,7 +12,6 @@ import InputMask from "react-input-mask";
 import Notiflix from "notiflix";
 import api from "../../api";
 import * as Yup from "yup";
-import moment from 'moment';
 
 function Register() {
   const navigate = useNavigate();
@@ -35,7 +34,6 @@ function Register() {
     }),
     onSubmit: async(values) => {
       await api.post("/create", values).then(res => {
-          values.date = moment(values.date).format('yyyy/mm/do');
           Notiflix.Notify.success("Cadastro criado com sucesso!");
           navigate("/");
         }).catch(error => {

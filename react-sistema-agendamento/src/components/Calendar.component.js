@@ -4,9 +4,11 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import { DivCalendar } from "./Calendar.style";
 import esLocale from "@fullcalendar/core/locales/pt-br";
 import api from "../api";
+import { useNavigate } from "react-router-dom";
 
 function Calendar() {
   const [events, setEvents] = useState([]);
+  const navigate = useNavigate();
 
   async function getAllAppointments() {
     const data = await api.get("/get-all-appointments");
@@ -26,6 +28,9 @@ function Calendar() {
         weekends={false}
         locale={esLocale}
         events={events}
+        eventClick={function(info) {
+          navigate(`/event/${info.event.id}`);
+        }}
       />
     </DivCalendar>
   );
