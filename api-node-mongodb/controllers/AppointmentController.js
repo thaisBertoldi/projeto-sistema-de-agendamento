@@ -41,6 +41,19 @@ class AppointmentController {
     }
     res.json(data);
   }
+
+  async finishAppointment(req, res) {
+    const data = await Appointment.FinishAppointment(req.params.id);
+    if (data) {
+      res.status(200);
+      res.send("Alterado com sucesso");
+    } else {
+      res.status(400);
+      res.json({ err: "Não foi possível finalizar a consulta." });
+      return;
+    }
+
+  }
 }
 
 module.exports = new AppointmentController();

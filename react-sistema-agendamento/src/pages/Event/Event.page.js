@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../../api";
 import Notiflix from "notiflix";
 import { Button, Container, DivAvatar, DivData, DivEmail, DivFinish, DivName, DivNameUser, DivTime, DivTitle } from "./Event.style";
@@ -8,10 +8,21 @@ import { FaUserCircle } from 'react-icons/fa';
 export default function Event() {
   const { id } = useParams();
   const [appointmentData, setAppointmentData] = useState([]);
+  const navigate = useNavigate();
 
   async function getById() {
     await api.get(`/getById/${id}`).then(res => {
       setAppointmentData(res.data);
+    }).catch(err => {
+      Notiflix.Notify.failure("Não foi possível concluir a operação. " + err.response.data.error);
+      console.log(err);
+    })
+  }
+
+  async function finishAppointment() {
+    await api.post(`/finish/${id}`).then(res => {
+      Notiflix.Notify.success('Consulta finalizada.');
+      navigate('/')
     }).catch(err => {
       Notiflix.Notify.failure("Não foi possível concluir a operação. " + err.response.data.error);
       console.log(err);
@@ -47,7 +58,7 @@ export default function Event() {
           <p>{appointmentData.time}</p>
       </DivTime>
       <DivFinish>
-        <Button>Finalizar Consulta</Button>
+        <Button onClick={() => finishAppointment()}>Finalizar Consulta</Button>
       </DivFinish>
     </Container>
   )
