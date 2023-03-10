@@ -27,8 +27,13 @@ class AppointmentController {
     res.send("Cadastrado com sucesso");
   }
 
-  async getAll(req, res) {
+  async getAllNotFinished(req, res) {
     const appointments = await Appointment.GetAll(false);
+    res.json(appointments);
+  }
+
+  async getAll(req, res) {
+    const appointments = await Appointment.GetAll(true);
     res.json(appointments);
   }
 

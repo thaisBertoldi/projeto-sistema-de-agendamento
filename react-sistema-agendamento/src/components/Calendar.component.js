@@ -11,7 +11,7 @@ function Calendar() {
   const navigate = useNavigate();
 
   async function getAllAppointments() {
-    const data = await api.get("/get-all-appointments");
+    const data = await api.get("/get-all-appointments-not-finished");
     setEvents(data.data);
   }
 
