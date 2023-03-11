@@ -37,12 +37,24 @@ class AppointmentController {
     res.json(appointments);
   }
 
+  async searchAppointment(req, res) {
+    const data = await Appointment.SearchAppointment(req.params.search);
+
+    if (!data) {
+      res.status(404);
+      res.json({ error: "Consulta não encontrada" });
+      return;
+    }
+
+    res.json(data);
+  }
+
   async getById(req, res) {
     const data = await Appointment.GetById(req.params.id);
     if (!data) {
       res.status(404);
       res.json({ error: "Consulta não encontrada" });
-      return
+      return;
     }
     res.json(data);
   }

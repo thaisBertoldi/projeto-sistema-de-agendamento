@@ -1,6 +1,5 @@
 import Notiflix from "notiflix";
 import React, { useEffect, useState } from "react";
-import { FaUserCircle } from "react-icons/fa";
 import api from "../../api";
 import {
   Container,
@@ -17,6 +16,7 @@ import {
 
 function List() {
   const [appointmentData, setAppointmentData] = useState([]);
+  const [appointmentSearch, setAppointmentSearch] = useState([]);
 
   async function getById() {
     await api
@@ -32,6 +32,15 @@ function List() {
       });
   }
 
+  async function searchAppointment() {
+    await api.get(`search-appointment/${appointmentSearch}`).then(res => {
+      setAppointmentData(res.data);
+    }).catch(err => {
+      console.log(err);
+      Notiflix.Notify.failure('Não foram encontradas consultas com esses dados');
+    }); 
+  }
+
   useEffect(() => {
     getById();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -40,8 +49,8 @@ function List() {
   return (
     <Container>
       <div>
-        <InputSearch type="search" name="search" id="search" placeholder="Digite o email ou o CPF"/>
-        <Button>Pesquisar</Button>
+        <InputSearch type="search" name="search" id="search" placeholder="Digite o email ou o CPF" onChange={(event) => setAppointmentSearch(event.target.value)}/>
+        <Button onClick={(event) => searchAppointment(event)}>Pesquisar</Button>
       </div>
       {appointmentData.map((appointment) => (
         <div>
