@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+`;
+
 export const AllForm = styled.div`
   display: grid;
   grid-template-columns: auto;
@@ -30,12 +37,20 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   margin-top: 10px;
-  width: 100px;
+  width: 200px;
   height: 35px;
   border-radius: 8px;
+	background-color: #15a115;
+	color: white;
   cursor: pointer;
 `;
 
 export const AlertErrorInput = styled.p`
   color: red;
+`;
+
+export const DivButton = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;

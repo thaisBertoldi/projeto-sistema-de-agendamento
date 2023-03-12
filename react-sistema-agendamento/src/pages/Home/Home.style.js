@@ -9,7 +9,7 @@ export const DivHome = styled.div`
 export const DivInstructions = styled.div`
   width: 300px;
   line-height: 1.5;
-  background: #eaf9ff;
+  background: #bfbfc0;
   border-right: 1px solid #d3e2e8;
   font-family: 'Montserrat', sans-serif;
 `;

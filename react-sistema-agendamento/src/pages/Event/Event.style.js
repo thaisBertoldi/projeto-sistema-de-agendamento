@@ -57,5 +57,7 @@ export const Button = styled.button`
   width: 300px;
   height: 35px;
   border-radius: 8px;
+  background-color: #7c1717;
+  color: white;
   cursor: pointer;
 `;

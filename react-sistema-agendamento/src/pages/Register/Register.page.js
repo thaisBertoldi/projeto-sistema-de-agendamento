@@ -3,6 +3,8 @@ import {
   AlertErrorInput,
   AllForm,
   Button,
+  Container,
+  DivButton,
   DivForm,
   Input,
   LabelInput,
@@ -43,7 +45,7 @@ function Register() {
     },
   });
   return (
-    <div>
+    <Container>
       <h2>Cadastro de consulta</h2>
       <form onSubmit={formik.handleSubmit}>
         <AllForm>
@@ -126,10 +128,11 @@ function Register() {
             ) : null}
           </DivForm>
         </AllForm>
-
-        <Button type="submit">Cadastrar</Button>
+        <DivButton>
+          <Button type="submit">Cadastrar</Button>
+        </DivButton>
       </form>
-    </div>
+    </Container>
   );
 }
 

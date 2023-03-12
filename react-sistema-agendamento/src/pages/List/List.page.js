@@ -12,6 +12,9 @@ import {
   InputSearch,
   Button,
   DivFinish,
+  DivCard,
+  AllCards,
+  DivSearch,
 } from "./List.style";
 
 function List() {
@@ -48,12 +51,13 @@ function List() {
 
   return (
     <Container>
-      <div>
+      <DivSearch>
         <InputSearch type="search" name="search" id="search" placeholder="Digite o email ou o CPF" onChange={(event) => setAppointmentSearch(event.target.value)}/>
         <Button onClick={(event) => searchAppointment(event)}>Pesquisar</Button>
-      </div>
+      </DivSearch>
+      <AllCards>
       {appointmentData.map((appointment) => (
-        <div>
+        <DivCard>
           <DivNameUser>
             <DivData>
               <DivName>{appointment.name}</DivName>
@@ -79,8 +83,9 @@ function List() {
               <p>Não finalizado</p>
             )}
           </DivFinish>
-        </div>
+        </DivCard>
       ))}
+      </AllCards>
     </Container>
   );
 }

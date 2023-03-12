@@ -3,7 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import { DivCalendar } from "./Calendar.style";
 import esLocale from "@fullcalendar/core/locales/pt-br";
-import api from "../api";
+import api from "../../api";
 import { useNavigate } from "react-router-dom";
 
 function Calendar() {
