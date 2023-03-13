@@ -14,7 +14,8 @@ class AppointmentService {
             cpf: data.cpf,
             date: data.date,
             time: data.time,
-            finished: false
+            finished: false,
+            notified: false
         });
         try {
             await newAppointment.save();
@@ -68,8 +69,12 @@ class AppointmentService {
             console.log(err);
             return [];
         }
-
     }
+
+    async SendNotification() {
+        const appointments = await this.GetAll(false);
+    }
+
 }
 
 module.exports = new AppointmentService();

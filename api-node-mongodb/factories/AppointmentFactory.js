@@ -13,7 +13,8 @@ class AppointmentFactory {
             id: simpleAppointment._id,
             title: simpleAppointment.name,
             start: startDate,
-            end: startDate
+            end: startDate,
+            notified: simpleAppointment.notified
         };
 
         return appointment;
